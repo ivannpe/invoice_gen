@@ -1,103 +1,220 @@
-import Image from "next/image";
-
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <div className="bg-white border-b border-gray-200 px-6 py-4 sticky top-0 z-10 shadow-sm">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-4">
+            <h1 className="text-xl font-semibold text-gray-900">Invoice Generator</h1>
+          </div>
+          <div className="flex items-center space-x-3">
+            <button className="px-4 py-2 bg-green-600 text-white rounded-md text-sm font-medium hover:bg-green-700">
+              Download PDF
+            </button>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+
+      {/* Main Content */}
+      <div className="max-w-4xl mx-auto px-6 py-8">
+        <div className="space-y-6">
+          
+          {/* Details Section */}
+          <div className="bg-white rounded-lg border border-gray-200">
+            <div className="px-6 py-4 border-b border-gray-200">
+              <h2 className="text-lg font-medium text-gray-900">Details</h2>
+            </div>
+            
+            <div className="p-6">
+              <div className="grid grid-cols-2 gap-8">
+                {/* From */}
+                <div>
+                  <div className="flex items-center mb-3">
+                    <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white text-sm font-medium mr-3">
+                      U
+                    </div>
+                    <div>
+                      <h3 className="font-medium text-gray-900">Bill From:</h3>
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <input 
+                      type="text" 
+                      placeholder="Company Name"
+                      className="w-full p-2 text-sm border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none placeholder:text-gray-400"
+                    />
+                    <input 
+                      type="text" 
+                      placeholder="Address Line 1"
+                      className="w-full p-2 text-sm border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none placeholder:text-gray-400"
+                    />
+                    <input 
+                      type="text" 
+                      placeholder="City, State ZIP"
+                      className="w-full p-2 text-sm border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none placeholder:text-gray-400"
+                    />
+                    <input 
+                      type="email" 
+                      placeholder="email@company.com"
+                      className="w-full p-2 text-sm border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none placeholder:text-gray-400"
+                    />
+                  </div>
+                </div>
+                
+                {/* To */}
+                <div>
+                  <div className="flex items-center mb-3">
+                    <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm font-medium mr-3">
+                      C
+                    </div>
+                    <div>
+                      <h3 className="font-medium text-gray-900">Bill To:</h3>
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <input 
+                      type="text" 
+                      placeholder="Client Company Name"
+                      className="w-full p-2 text-sm border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none placeholder:text-gray-400"
+                    />
+                    <input 
+                      type="text" 
+                      placeholder="Address Line 1"
+                      className="w-full p-2 text-sm border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none placeholder:text-gray-400"
+                    />
+                    <input 
+                      type="text" 
+                      placeholder="City, State ZIP"
+                      className="w-full p-2 text-sm border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none placeholder:text-gray-400"
+                    />
+                    <input 
+                      type="email" 
+                      placeholder="client@email.com"
+                      className="w-full p-2 text-sm border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none placeholder:text-gray-400"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Invoice Info */}
+              <div className="mt-8 grid grid-cols-3 gap-6">
+                <div>
+                  <label className="block text-sm text-gray-600 mb-1">Invoice Date</label>
+                  <input 
+                    type="date" 
+                    className="w-full p-2 border border-gray-300 rounded text-gray-400"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm text-gray-600 mb-1">Due Date</label>
+                  <input 
+                    type="date" 
+                    className="w-full p-2 border border-gray-300 rounded text-gray-400"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm text-gray-600 mb-1 text-gray-500">Invoice #</label>
+                  <input 
+                    type="text" 
+                    placeholder="INV-001"
+                    className="w-full p-2 border border-gray-300 rounded placeholder:text-gray-400"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Items Section */}
+          <div className="bg-white rounded-lg border border-gray-200">
+            <div className="px-6 py-4 border-b border-gray-200">
+              <h2 className="text-lg font-medium text-gray-900">Items</h2>
+            </div>
+            
+            <div className="p-6">
+              {/* Table Header */}
+              <div className="grid grid-cols-12 gap-4 mb-4 text-xs text-gray-500 uppercase tracking-wider">
+                <div className="col-span-5">Description</div>
+                <div className="col-span-2">Quantity</div>
+                <div className="col-span-2">Price</div>
+                <div className="col-span-2">Amount</div>
+                <div className="col-span-1"></div>
+              </div>
+              
+              {/* Line Item Row */}
+              <div className="grid grid-cols-12 gap-4 items-center py-3 border-b border-gray-100">
+                <div className="col-span-5">
+                  <input 
+                    type="text" 
+                    placeholder="Item Description"
+                    className="w-full p-2 border-0 focus:outline-none text-sm placeholder:text-gray-400"
+                  />
+                </div>
+                <div className="col-span-2">
+                  <input 
+                    type="number" 
+                    placeholder="1"
+                    className="w-full p-2 border-0 focus:outline-none text-sm placeholder:text-gray-400"
+                  />
+                </div>
+                <div className="col-span-2">
+                  <input 
+                    type="number" 
+                    placeholder="0.00"
+                    className="w-full p-2 border-0 focus:outline-none text-sm placeholder:text-gray-400"
+                  />
+                </div>
+                <div className="col-span-2">
+                  <span className="text-sm text-gray-400">$0.00</span>
+                </div>
+                <div className="col-span-1 flex justify-end">
+                  <button className="text-red-500 text-sm font-medium px-3 py-3 rounded hover:bg-red-50">
+                    Remove
+                  </button>
+                </div>
+              </div>
+              
+              {/* Add Item Button */}
+              <button className="w-full mt-4 py-3 text-sm text-blue-600 hover:bg-blue-50 rounded">
+                + New Item
+              </button>
+              
+              {/* Total */}
+              <div className="mt-6 pt-4 border-t border-gray-200 text-right">
+                <div className="text-lg font-semibold text-gray-500">Total: $0.00</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Notes Section */}
+          <div className="bg-white rounded-lg border border-gray-200">
+            <div className="px-6 py-4 border-b border-gray-200">
+              <h2 className="text-lg font-medium text-gray-900">Invoice Notes</h2>
+            </div>
+            <div className="p-6">
+              <textarea 
+                rows={4}
+                placeholder="Add any special terms, payment instructions, or additional notes for this Invoice..."
+                className="w-full p-3 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none resize-none placeholder:text-gray-400"
+              />
+            </div>
+          </div>
+
+          {/* Invoice Preview Section */}
+          <div className="bg-white rounded-lg border border-gray-200">
+            <div className="px-6 py-4 border-b border-gray-200">
+              <h2 className="text-lg font-medium text-gray-900">Invoice Preview</h2>
+            </div>
+            <div className="p-6">
+              <div className="bg-gray-50 rounded-lg p-6 min-h-64">
+                <div className="text-center text-gray-500 py-8">
+                  <div className="text-lg font-medium mb-2">Preview will appear here</div>
+                  <div className="text-sm">Fill out the form above to see your Invoice Preview</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  );
+  )
 }
