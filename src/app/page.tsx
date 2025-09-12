@@ -1,4 +1,28 @@
+"use client";
+import { useState } from 'react';
+
 export default function HomePage() {
+  
+  const [billFrom, setBillFrom] = useState({ 
+    companyName: '', 
+    address: '', 
+    cityStateZip: '', 
+    email: '' 
+  });
+
+  const [billTo, setBillTo] = useState({ 
+    companyName: '', 
+    address: '', 
+    cityStateZip: '', 
+    email: '' 
+  });
+
+  const [invoiceDetails, setInvoiceDetails] = useState({
+    invoiceDate: '',
+    dueDate: '',
+    invoiceNumber: ''
+  });
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -41,22 +65,30 @@ export default function HomePage() {
                     <input 
                       type="text" 
                       placeholder="Company Name"
-                      className="w-full p-2 text-sm border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none placeholder:text-gray-400"
+                      value={billFrom.companyName}
+                      onChange={(e) => setBillFrom({...billFrom, companyName: e.target.value})}
+                      className="w-full p-2 text-sm text-gray-900 border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none placeholder:text-gray-400"
                     />
                     <input 
                       type="text" 
                       placeholder="Address Line 1"
-                      className="w-full p-2 text-sm border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none placeholder:text-gray-400"
+                      value={billFrom.address}
+                      onChange={(e) => setBillFrom({...billFrom, address: e.target.value})}
+                      className="w-full p-2 text-sm text-gray-900 border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none placeholder:text-gray-400"
                     />
                     <input 
                       type="text" 
                       placeholder="City, State ZIP"
-                      className="w-full p-2 text-sm border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none placeholder:text-gray-400"
+                      value={billFrom.cityStateZip}
+                      onChange={(e) => setBillFrom({...billFrom, cityStateZip: e.target.value})}
+                      className="w-full p-2 text-sm text-gray-900 border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none placeholder:text-gray-400"
                     />
                     <input 
                       type="email" 
                       placeholder="email@company.com"
-                      className="w-full p-2 text-sm border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none placeholder:text-gray-400"
+                      value={billFrom.email}
+                      onChange={(e) => setBillFrom({...billFrom, email: e.target.value})}
+                      className="w-full p-2 text-sm text-gray-900 border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none placeholder:text-gray-400"
                     />
                   </div>
                 </div>
@@ -75,22 +107,30 @@ export default function HomePage() {
                     <input 
                       type="text" 
                       placeholder="Client Company Name"
-                      className="w-full p-2 text-sm border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none placeholder:text-gray-400"
+                      value={billTo.companyName}
+                      onChange={(e) => setBillTo({...billTo, companyName: e.target.value})}
+                      className="w-full p-2 text-sm text-gray-900 border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none placeholder:text-gray-400"
                     />
                     <input 
                       type="text" 
                       placeholder="Address Line 1"
-                      className="w-full p-2 text-sm border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none placeholder:text-gray-400"
+                      value={billTo.address}
+                      onChange={(e) => setBillTo({...billTo, address: e.target.value})}
+                      className="w-full p-2 text-sm text-gray-900 border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none placeholder:text-gray-400"
                     />
                     <input 
                       type="text" 
                       placeholder="City, State ZIP"
-                      className="w-full p-2 text-sm border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none placeholder:text-gray-400"
+                      value={billTo.cityStateZip}
+                      onChange={(e) => setBillTo({...billTo, cityStateZip: e.target.value})}
+                      className="w-full p-2 text-sm text-gray-900 border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none placeholder:text-gray-400"
                     />
                     <input 
                       type="email" 
                       placeholder="client@email.com"
-                      className="w-full p-2 text-sm border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none placeholder:text-gray-400"
+                      value={billTo.email}
+                      onChange={(e) => setBillTo({...billTo, email: e.target.value})}
+                      className="w-full p-2 text-sm text-gray-900 border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none placeholder:text-gray-400"
                     />
                   </div>
                 </div>
@@ -102,14 +142,22 @@ export default function HomePage() {
                   <label className="block text-sm text-gray-600 mb-1">Invoice Date</label>
                   <input 
                     type="date" 
-                    className="w-full p-2 border border-gray-300 rounded text-gray-400"
+                    value={invoiceDetails.invoiceDate}
+                    onChange={(e) => setInvoiceDetails({...invoiceDetails, invoiceDate: e.target.value})}
+                    className={`w-full p-2 border border-gray-300 rounded ${
+                      invoiceDetails.invoiceDate ? 'text-gray-900' : 'text-gray-400'
+                    }`}
                   />
                 </div>
                 <div>
                   <label className="block text-sm text-gray-600 mb-1">Due Date</label>
                   <input 
                     type="date" 
-                    className="w-full p-2 border border-gray-300 rounded text-gray-400"
+                    value={invoiceDetails.dueDate}
+                    onChange={(e) => setInvoiceDetails({...invoiceDetails, dueDate: e.target.value})}
+                    className={`w-full p-2 border border-gray-300 rounded ${
+                      invoiceDetails.dueDate ? 'text-gray-900' : 'text-gray-400'
+                    }`}
                   />
                 </div>
                 <div>
@@ -117,7 +165,9 @@ export default function HomePage() {
                   <input 
                     type="text" 
                     placeholder="INV-001"
-                    className="w-full p-2 border border-gray-300 rounded placeholder:text-gray-400"
+                    value={invoiceDetails.invoiceNumber}
+                    onChange={(e) => setInvoiceDetails({...invoiceDetails, invoiceNumber: e.target.value})}
+                    className="text-gray-900 w-full p-2 border border-gray-300 rounded placeholder:text-gray-400"
                   />
                 </div>
               </div>
