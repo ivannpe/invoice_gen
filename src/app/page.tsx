@@ -57,6 +57,12 @@ export default function HomePage() {
     }]);
   };
 
+  const removeLineItem = (id: number): void => {
+    if (lineItems.length > 1) {
+      setLineItems(lineItems.filter(item => item.id !== id));
+    }
+  };
+
 
 
 
@@ -278,7 +284,10 @@ export default function HomePage() {
                     </span>
                   </div>
                   <div className="col-span-1 flex justify-end">
-                    <button className="text-red-500 text-sm font-medium px-3 py-3 rounded hover:bg-red-50">
+                    <button 
+                      onClick={() => removeLineItem(item.id)}
+                      className="text-red-500 text-sm font-medium px-3 py-3 rounded hover:bg-red-50"
+                    >
                       Remove
                     </button>
                   </div>
