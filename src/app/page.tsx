@@ -2,7 +2,7 @@
 import { useState } from 'react';
 
 export default function HomePage() {
-  
+
   const [billFrom, setBillFrom] = useState({ 
     companyName: '', 
     address: '', 
@@ -22,6 +22,13 @@ export default function HomePage() {
     dueDate: '',
     invoiceNumber: ''
   });
+
+  const [lineItems, setLineItems] = useState([{ 
+    id: 1, description: '', quantity: '', price: ''
+  }]);
+
+
+
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -196,25 +203,48 @@ export default function HomePage() {
                   <input 
                     type="text" 
                     placeholder="Item Description"
-                    className="w-full p-2 border-0 focus:outline-none text-sm placeholder:text-gray-400"
+                    value={lineItems[0].description}
+                    onChange={(e) => {
+                      const newItems = [...lineItems];
+                      newItems[0].description = e.target.value;
+                      setLineItems(newItems);
+                    }}
+                    className="w-full p-2 border-0 focus:outline-none text-sm text-gray-900 placeholder:text-gray-400"
                   />
                 </div>
                 <div className="col-span-2">
                   <input 
                     type="number" 
                     placeholder="1"
-                    className="w-full p-2 border-0 focus:outline-none text-sm placeholder:text-gray-400"
+                    value={lineItems[0].quantity}
+                    onChange={(e) => {
+                      const newItems = [...lineItems];
+                      newItems[0].quantity = e.target.value; // Keep as string like price
+                      setLineItems(newItems);
+                    }}
+                    className="w-full p-2 border-0 focus:outline-none text-sm text-gray-900 placeholder:text-gray-400"
                   />
                 </div>
                 <div className="col-span-2">
                   <input 
                     type="number" 
                     placeholder="0.00"
-                    className="w-full p-2 border-0 focus:outline-none text-sm placeholder:text-gray-400"
+                    step="0.01"
+                    value={lineItems[0].price}
+                    onChange={(e) => {
+                      const newItems = [...lineItems];
+                      newItems[0].price = e.target.value;
+                      setLineItems(newItems);
+                    }}
+                    className="w-full p-2 border-0 focus:outline-none text-sm text-gray-900 placeholder:text-gray-400"
                   />
                 </div>
                 <div className="col-span-2">
-                  <span className="text-sm text-gray-400">$0.00</span>
+                  <span className={`text-sm ${
+                    ((Number(lineItems[0].quantity) || 0) * (Number(lineItems[0].price) || 0)) > 0 ? 'text-gray-900' : 'text-gray-400'
+                  }`}>
+                    ${((Number(lineItems[0].quantity) || 0) * (Number(lineItems[0].price) || 0)).toFixed(2)}
+                  </span>
                 </div>
                 <div className="col-span-1 flex justify-end">
                   <button className="text-red-500 text-sm font-medium px-3 py-3 rounded hover:bg-red-50">
@@ -229,8 +259,10 @@ export default function HomePage() {
               </button>
               
               {/* Total */}
-              <div className="mt-6 pt-4 border-t border-gray-200 text-right">
-                <div className="text-lg font-semibold text-gray-500">Total: $0.00</div>
+              <div className={`mt-6 pt-4 border-t border-gray-200 text-right text-lg font-semibold ${
+                ((Number(lineItems[0].quantity) || 0) * (Number(lineItems[0].price) || 0)) > 0 ? 'text-gray-900' : 'text-gray-500'
+              }`}>
+                Total: ${((Number(lineItems[0].quantity) || 0) * (Number(lineItems[0].price) || 0)).toFixed(2)}
               </div>
             </div>
           </div>
