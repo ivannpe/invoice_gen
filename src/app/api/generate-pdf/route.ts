@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { BillingInfo, InvoiceInfo, LineItem } from '../../../types';
 import puppeteer from 'puppeteer';
 
 export async function POST(request: NextRequest) {
@@ -33,7 +34,14 @@ export async function POST(request: NextRequest) {
   }
 }
 
-function generateInvoiceHTML(data: any) {
+function generateInvoiceHTML(data: {
+  billFrom: BillingInfo;
+  billTo: BillingInfo;
+  invoiceDetails: InvoiceInfo;
+  lineItems: LineItem[];
+  notes: string;
+  total: string;
+}) {
   const formatDate = (dateStr: string) => dateStr || 'Not set';
   
   return `
