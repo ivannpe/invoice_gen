@@ -3,21 +3,16 @@ import { LineItem } from '../types';
 interface InvoiceItemsProps {
     lineItems: LineItem[];
     setLineItems: (items: LineItem[]) => void;
+    calculateLineAmount: (item: LineItem) => string;
+    calculateTotal: () => string;
 }
 
-export default function InvoiceItems({lineItems, setLineItems}: InvoiceItemsProps) {
-
-    const calculateLineAmount = (item: LineItem): string => {
-        const quantity = Number(item.quantity) || 0;
-        const price = Number(item.price) || 0;
-        return (quantity * price).toFixed(2);
-    };
-
-    const calculateTotal = (): string => {
-        return lineItems.reduce((sum, item) => {
-        return sum + Number(calculateLineAmount(item));
-        }, 0).toFixed(2);
-    };
+export default function InvoiceItems({
+  lineItems, 
+  setLineItems,
+  calculateLineAmount,
+  calculateTotal
+}: InvoiceItemsProps) {
 
     const addLineItem = (): void => {
         const newId = lineItems.length > 0 ? Math.max(...lineItems.map(item => item.id)) + 1 : 1;

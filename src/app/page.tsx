@@ -37,6 +37,18 @@ export default function HomePage() {
 
   const [notes, setNotes] = useState('');
 
+  const calculateLineAmount = (item: LineItem): string => {
+      const quantity = Number(item.quantity) || 0;
+      const price = Number(item.price) || 0;
+      return (quantity * price).toFixed(2);
+  };
+
+  const calculateTotal = (): string => {
+      return lineItems.reduce((sum, item) => {
+      return sum + Number(calculateLineAmount(item));
+      }, 0).toFixed(2);
+  };
+
 
 
   return (
@@ -63,6 +75,8 @@ export default function HomePage() {
           <InvoiceItems
             lineItems={lineItems}
             setLineItems={setLineItems}
+            calculateLineAmount={calculateLineAmount}
+            calculateTotal={calculateTotal}
           />
 
           {/* Notes Section */}
@@ -72,7 +86,15 @@ export default function HomePage() {
           />
 
           {/* Invoice Preview Section */}
-          <InvoicePreview />
+          <InvoicePreview 
+            billFrom={billFrom}
+            billTo={billTo}
+            invoiceDetails={invoiceDetails}
+            lineItems={lineItems}
+            notes={notes}
+            calculateLineAmount={calculateLineAmount}
+            total={calculateTotal()}
+          />
         </div>
       </div>
     </div>
