@@ -55,7 +55,14 @@ export default function HomePage() {
     <div className="min-h-screen bg-gray-50">
 
       {/* Header */}
-      <InvoiceHeader onDownloadPDF={() => console.log('Download PDF Button Clicked')} />
+      <InvoiceHeader 
+        billFrom={billFrom}
+        billTo={billTo}
+        invoiceDetails={invoiceDetails}
+        lineItems={lineItems}
+        notes={notes}
+        total={calculateTotal()}
+      />
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-6 py-8">

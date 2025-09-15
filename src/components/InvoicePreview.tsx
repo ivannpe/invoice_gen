@@ -1,5 +1,4 @@
 import { BillingInfo, InvoiceInfo, LineItem } from "../types";
-
 interface InvoicePreviewProps {
     billFrom: BillingInfo;
     billTo: BillingInfo;
@@ -25,7 +24,7 @@ export default function InvoicePreview({
         <h2 className="text-lg font-medium text-gray-900">Invoice Preview</h2>
       </div>
       <div className="p-6">
-        <div className="bg-white rounded-lg p-8 min-h-64 border">
+        <div id="invoice-preview" className="bg-white rounded-lg p-8 min-h-64 border">
             {/* Invoice Header */}
             <div className="flex justify-between items-start mb-8">
                 <div>
