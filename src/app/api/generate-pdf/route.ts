@@ -51,6 +51,9 @@ function generateInvoiceHTML(data: {
       <meta charset="utf-8">
       <title>Invoice</title>
       <script src="https://cdn.tailwindcss.com"></script>
+      <style>
+        body { font-family: Arial, sans-serif; }
+      </style>
     </head>
     <body class="bg-white p-8">
       <div class="max-w-4xl mx-auto">

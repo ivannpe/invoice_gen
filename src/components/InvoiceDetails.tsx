@@ -28,9 +28,6 @@ export default function InvoiceDetails({
                 {/* From */}
                 <div>
                   <div className="flex items-center mb-3">
-                    <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white text-sm font-medium mr-3">
-                      U
-                    </div>
                     <div>
                       <h3 className="font-medium text-gray-900">Bill From:</h3>
                     </div>
@@ -70,9 +67,6 @@ export default function InvoiceDetails({
                 {/* To */}
                 <div>
                   <div className="flex items-center mb-3">
-                    <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm font-medium mr-3">
-                      C
-                    </div>
                     <div>
                       <h3 className="font-medium text-gray-900">Bill To:</h3>
                     </div>

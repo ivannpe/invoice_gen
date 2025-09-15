@@ -91,7 +91,7 @@ export default function InvoiceItems({
                   </div>
                   <div className="col-span-2">
                     <span className={`text-sm ${
-                      Number(calculateLineAmount(item)) > 0 ? 'text-gray-900' : 'text-gray-400'
+                      (lineItems[0].quantity && lineItems[0].price) ? 'text-gray-900' : 'text-gray-400'
                     }`}>
                       ${calculateLineAmount(item)}
                     </span>
